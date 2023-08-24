@@ -733,11 +733,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1185702869262362207, guid: 4823f4214c306684e97e078b4117b314, type: 3}
       propertyPath: _maxY
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185702869262362207, guid: 4823f4214c306684e97e078b4117b314, type: 3}
+      propertyPath: _minX
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1185702869262362207, guid: 4823f4214c306684e97e078b4117b314, type: 3}
       propertyPath: _minY
-      value: 2
+      value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 1185702869262362207, guid: 4823f4214c306684e97e078b4117b314, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 8696620993716274449, guid: 9614d4addfae5c94a812784e5e237904, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4823f4214c306684e97e078b4117b314, type: 3}
