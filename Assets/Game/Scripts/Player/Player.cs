@@ -30,10 +30,9 @@ public class Player : MonoBehaviour // использую 3d капсулу
     {
         _velocity = input * _maxSpeed;
         _controller.Move(_velocity * Time.fixedDeltaTime);
-        _bullet._direction = _controller.transform.rotation.y;
-        if (input.x != 0)
-        {
-            _controller.transform.rotation = Quaternion.LookRotation(new Vector3(input.x, 0, 0));
-        }
+        _bullet._directionX = input.x;
+        _bullet._directionY = input.y;
+        _controller.transform.rotation = Quaternion.LookRotation(_velocity);
+
     }
 }

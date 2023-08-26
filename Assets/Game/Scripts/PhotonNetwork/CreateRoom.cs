@@ -8,7 +8,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField _createInput;
     public void OnClickCreateRoom()
     {
-        if (!PhotonNetwork.IsConnected)
+        if (!PhotonNetwork.IsConnected || PhotonNetwork.InRoom)
         {
             return;
         }
@@ -19,7 +19,6 @@ public class CreateRoom : MonoBehaviourPunCallbacks
             IsVisible = true,
             IsOpen = true,
         };
-
         PhotonNetwork.CreateRoom(_createInput.text, roomOptions);
     }
     public override void OnCreatedRoom()

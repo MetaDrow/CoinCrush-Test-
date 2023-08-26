@@ -111,7 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dff20f14e1e844381f186f1c0966a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: 0.7071068
+  _directionX: 0
+  _directionY: 0
+  _bulletDirection: {x: 0, y: 0, z: 0}
   _bulletSpeed: 50
 --- !u!114 &-8220487619036049723
 MonoBehaviour:
