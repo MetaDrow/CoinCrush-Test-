@@ -7,6 +7,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI _logText;
     void Start()
     {
+        PhotonNetwork.JoinLobby();
         Log("You name is : " + PhotonNetwork.NickName);
         Log("AutomaticallySyncScenes : " + PhotonNetwork.AutomaticallySyncScene);
         Log("PhotonNetwork.GameVersion : " + PhotonNetwork.GameVersion.ToString());

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -6,10 +7,15 @@ public class Bullet : MonoBehaviour
     [SerializeField] internal float _directionX;
     [SerializeField] internal float _directionY;
     [SerializeField] private float _bulletSpeed;
-
-    void Update()
+    [SerializeField] PhotonView _view;
+    void FixedUpdate()
     {
-        Move();
+        if(_view.IsMine)
+        {
+            Move();
+
+        }
+
     }
 
     private void Move()
