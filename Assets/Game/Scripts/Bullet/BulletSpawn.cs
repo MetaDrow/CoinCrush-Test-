@@ -2,7 +2,7 @@ using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawn : MonoBehaviour
+public class BulletSpawn : MonoBehaviourPunCallbacks
 {
     [SerializeField] private InputReaderSO _playerInputReader;
     [SerializeField] internal GameObject _bullet;

@@ -21,10 +21,7 @@ public class GameSettings : ScriptableObject
     }
     public static string GameVersion
     {
-        get
-        {
-            return Instance._gameVersion;
-        }
+        get => Instance._gameVersion;
     }
 
     public static string NickName
