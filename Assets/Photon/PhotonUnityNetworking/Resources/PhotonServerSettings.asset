@@ -38,6 +38,11 @@ MonoBehaviour:
   - DestroyRpc
   - Move
   - Movement
+  - TakeDamage
+  - OnTakeDamage
+  - OnDamage
+  - NoMasterTakeDamage
+  - MasterClientTakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -1,52 +1,40 @@
 using Photon.Pun;
+using System;
 using UnityEngine;
 
-public class Bullet : MonoBehaviourPunCallbacks
+public class Bullet : MonoBehaviour
 {
-    private Vector2 _bulletVelocity;
     [SerializeField] internal float _directionX;
     [SerializeField] internal float _directionY;
     [SerializeField] private float _bulletSpeed;
-    [SerializeField] PhotonView _view;
-    [SerializeField] CharacterController _bulletController;
-    [SerializeField] Rigidbody _bulletRigidbody;
-
-    [SerializeField] int _currentDamageValue;
-    private void Start()
-    {
-        //_bulletController = GetComponent<CharacterController>();
-        //_bulletRigidbody = GetComponent<Rigidbody>();
-        // _view = GetComponent<PhotonView>();
-    }
+    [SerializeField] private PhotonView _view;
+    [SerializeField] private Rigidbody _bulletRigidbody;
+    [SerializeField] private int _currentDamageValue;
+    private Vector2 _bulletVelocity;
+    public static event Action Damage;
     void FixedUpdate()
     {
-        if (!_view.IsMine)
+        if (_view.IsMine)
         {
-            return;
+            Move();
 
         }
-        else
-        {
-            photonView.RPC("Move", RpcTarget.All);
-        }
-
     }
-
-    [PunRPC]
     public void Move()
     {
         _bulletVelocity = new Vector3(_directionX, _directionY, 0);
-        // transform.position += (Vector3)_bulletVelocity * _bulletSpeed * Time.fixedDeltaTime;
-
-        //_bulletController.Move(_bulletVelocity * _bulletSpeed * Time.fixedDeltaTime);
-        // _bulletRigidbody.velocity = _bulletVelocity * _bulletSpeed * Time.fixedDeltaTime;
         _bulletRigidbody.AddForce(_bulletVelocity * _bulletSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
-        HealthController health = other.gameObject.GetComponent<HealthController>();
-        health?.TakeDamage(_currentDamageValue);
+        PlayerHealth health = other.GetComponent<PlayerHealth>();
+
+        if (other.CompareTag("Player") && _view.IsMine)
+        {
+            health?.TakeDamage(_currentDamageValue);
+            Damage?.Invoke();
+            PhotonNetwork.Destroy(this._view);
+        }
     }
 }

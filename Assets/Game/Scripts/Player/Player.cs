@@ -1,67 +1,56 @@
 using UnityEngine;
 using Photon.Pun;
-using UnityEngine.TextCore.Text;
+using System;
 
-public class Player : MonoBehaviourPunCallbacks
+public class Player : MonoBehaviour
 {
+    [SerializeField] private HealthController _healthController;
     [SerializeField] private InputReaderSO _playerInputReader;
-    [SerializeField] PhotonView _view;
+    [SerializeField] internal PhotonView _view;
     [SerializeField] internal CharacterController _controller;
     [SerializeField] private Bullet _bullet;
     [Header("Movement Parameters")]
     [SerializeField] protected internal Vector2 _input;
     protected internal Vector2 _velocity;
     [SerializeField, Range(0, 50)] private float _maxSpeed;
+    [SerializeField] internal GameObject _weapon;
 
     private Vector3 _direction;
 
+
     void Start()
     {
+        //_weapon = GetComponent<Weapon>();
         _controller = GetComponent<CharacterController>();
         _view = GetComponent<PhotonView>();
     }
 
     void FixedUpdate()
     {
-        if (!_view.IsMine)
+        if (_view.IsMine)
         {
-            return;
+            Movement(_input);
 
         }
-        else
-        {
-            photonView.RPC("Movement", RpcTarget.All, _input);
-        }
+
     }
 
-    [PunRPC]
+
     void Movement(Vector2 input)
     {
 
-
         _direction = new Vector3(input.x, 0, input.y);
 
+        var targetAngle = Mathf.Atan2(input.x * -1, input.y) * Mathf.Rad2Deg; // -1 for  x axies
 
-
-
-
-
-        // var targetAngle = Mathf.Atan2(input.x * -1, input.y) * Mathf.Rad2Deg;
-        var targetAngle = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
         _controller.transform.rotation = Quaternion.Euler(0, 0, targetAngle);
         _velocity = input * _maxSpeed;
         _controller.Move(_velocity * Time.fixedDeltaTime);
 
         _bullet._directionX = input.x;
         _bullet._directionY = input.y;
-        /*
-        /////////////////////////////////////////////// work, dont touch 
-        _velocity = input * _maxSpeed;
-        _controller.Move(_velocity * Time.fixedDeltaTime);
-                _bullet._directionX = input.x;
-        _bullet._directionY = input.y;
-        //_controller.transform.rotation = Quaternion.LookRotation(_direction); // 
-        */
+
+
     }
 
 }

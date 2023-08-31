@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TextMeshProUGUI _text;
 
+
     void Start()
     {
         Log("My name is : " + PhotonNetwork.NickName);
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        base.OnLeftRoom();
+
     }
 
     private void Log(string message)

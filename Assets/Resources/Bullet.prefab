@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 6958936729217203986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.45, y: 0, z: 1}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,8 +118,8 @@ MonoBehaviour:
   _directionY: 0
   _bulletSpeed: 50
   _view: {fileID: -8220487619036049723}
-  _bulletController: {fileID: -4956572725010040405}
   _bulletRigidbody: {fileID: -9202491705618044010}
+  _currentDamageValue: 10
 --- !u!114 &-8220487619036049723
 MonoBehaviour:
   m_ObjectHideFlags: 0

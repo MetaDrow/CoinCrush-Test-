@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5090006407072986362}
   - component: {fileID: 7951267245864090093}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720926604168168275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.469, z: 0}
-  m_LocalScale: {x: 0.47804135, y: 0.6231, z: 1}
+  m_LocalPosition: {x: 0, y: 0.719, z: 0}
+  m_LocalScale: {x: 0.47804135, y: 0.4903797, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 31510830236503485}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1381459135
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,9 +100,11 @@ GameObject:
   - component: {fileID: 4584185058027944990}
   - component: {fileID: 7914549193495095702}
   - component: {fileID: 4472828159350242835}
+  - component: {fileID: -5178407857050689599}
+  - component: {fileID: 215309134130923986}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 4774690381034708362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5102, y: 3.5102, z: 3.5102}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5090006407072986362}
@@ -165,7 +167,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -186,8 +188,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.99999994
-  m_Radius: 0.49999997
+  m_Height: 1
+  m_Radius: 0.45
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -205,12 +207,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d1f1a06c7a4db4bb661bc240b8a645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthController: {fileID: 0}
   _playerInputReader: {fileID: 11400000, guid: a784facc9967b09469fb11d3d8a54f81, type: 2}
   _view: {fileID: 7914549193495095702}
   _controller: {fileID: 1097131567186018791}
   _bullet: {fileID: 4010565448526150291, guid: c4a73f231e68a31439d1c7853e6d8e97, type: 3}
   _input: {x: 0, y: 0}
-  _maxSpeed: 15
+  _maxSpeed: 5
+  _weapon: {fileID: 1720926604168168275}
 --- !u!114 &4300033794616296927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,3 +297,36 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &-5178407857050689599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4774690381034708362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dc611013ca1e24786f874b46b8d0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHealth: 100
+  _maxHealth: 100
+  _currentHealth: 0
+  _characterHealth: 0
+  _view: {fileID: 7914549193495095702}
+--- !u!114 &215309134130923986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4774690381034708362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f2b417821699e478d0aa76f76f654e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInputReader: {fileID: 11400000, guid: a784facc9967b09469fb11d3d8a54f81, type: 2}
+  _bullet: {fileID: 6958936729217203986, guid: c4a73f231e68a31439d1c7853e6d8e97, type: 3}
+  _playerSpawn: {fileID: 1185702869262362207, guid: 4823f4214c306684e97e078b4117b314, type: 3}
+  _view: {fileID: 7914549193495095702}
