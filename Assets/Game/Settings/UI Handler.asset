@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a9b1e42e25c24449f3a7d7df0783cb, type: 3}
-  m_Name: Health Controller
+  m_Script: {fileID: 11500000, guid: 1d901a47b9936c9499aaca5ff340a16f, type: 3}
+  m_Name: UI Handler
   m_EditorClassIdentifier: 
-  _startingHealth: 100
-  _maxHealth: 100
-  _currentHealth: 0
+  _playerHealthCount: 100
+  _uiSliderCount: 0

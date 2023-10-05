@@ -12,7 +12,7 @@ public class PlayerSpawn : MonoBehaviour
         Spawn();
     }
 
-    public GameObject Spawn()
+    private GameObject Spawn()
     {
         Vector2 spawnPosition = new Vector2(Random.Range(_minX, _minY), Random.Range(_maxX, _maxY));
         GameObject player = PhotonNetwork.Instantiate("Player", spawnPosition, Quaternion.identity);

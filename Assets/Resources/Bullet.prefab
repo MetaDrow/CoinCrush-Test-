@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionX: 0
   _directionY: 0
-  _bulletSpeed: 50
+  _bulletSpeed: 70
   _view: {fileID: -8220487619036049723}
   _bulletRigidbody: {fileID: -9202491705618044010}
   _currentDamageValue: 10

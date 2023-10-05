@@ -1,5 +1,4 @@
 using Photon.Pun;
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,30 +10,41 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody _bulletRigidbody;
     [SerializeField] private int _currentDamageValue;
     private Vector2 _bulletVelocity;
-    public static event Action Damage;
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         if (_view.IsMine)
         {
-            Move();
-
+            Move(_directionX, _directionY);
         }
     }
-    public void Move()
+
+    private void Move(float directionX, float directionY)
     {
-        _bulletVelocity = new Vector3(_directionX, _directionY, 0);
+        _bulletVelocity = new Vector3(directionX, directionY, 0);
         _bulletRigidbody.AddForce(_bulletVelocity * _bulletSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerHealth health = other.GetComponent<PlayerHealth>();
+        PlayerHealth health = other?.GetComponent<PlayerHealth>();
 
-        if (other.CompareTag("Player") && _view.IsMine)
+        if (_view.IsMine && health != null)
         {
-            health?.TakeDamage(_currentDamageValue);
-            Damage?.Invoke();
-            PhotonNetwork.Destroy(this._view);
+            Logging.instance.Log("Bullt Hit UserID " + health.uiID);
+            health?.TakeDamage(_currentDamageValue, health.uiID);
+
+
+            PhotonNetwork.Destroy(_view);
+        }
+        else if (other.CompareTag("Wall"))
+        {
+            PhotonNetwork.Destroy(_view);
+        }
+        else
+        {
+            Logging.instance.Log("Bullet no hit");
+            return;
         }
     }
 }

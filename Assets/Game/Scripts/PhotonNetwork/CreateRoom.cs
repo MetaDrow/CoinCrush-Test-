@@ -15,7 +15,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks
 
         RoomOptions roomOptions = new RoomOptions
         {
-            MaxPlayers = 2,
+            MaxPlayers = 3,
             IsVisible = true,
             IsOpen = true,
         };

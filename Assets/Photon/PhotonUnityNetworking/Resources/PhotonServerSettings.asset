@@ -43,6 +43,10 @@ MonoBehaviour:
   - OnDamage
   - NoMasterTakeDamage
   - MasterClientTakeDamage
+  - MasterClientHealthCheck
+  - NoMasterClientTakeDamage
+  - MasterTakeDamage
+  - ClientTakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

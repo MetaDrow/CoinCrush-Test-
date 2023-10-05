@@ -4,9 +4,9 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private InputReaderSO _playerInputReader;
-    [SerializeField] internal GameObject _bullet;
+    [SerializeField] private GameObject _bullet;
     [SerializeField] private PhotonView _view;
-    private Player _player;
+    [SerializeField] private Player _player;
 
     private void Start()
     {

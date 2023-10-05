@@ -3,9 +3,9 @@ using Photon.Pun;
 
 public abstract class HealthController : MonoBehaviourPunCallbacks
 {
-    [SerializeField] internal int _startingHealth = 100;
-    [SerializeField] internal int _maxHealth = 100;
-    [SerializeField] internal int _currentHealth;
+    private int _startingHealth = 100;
+    private int _maxHealth = 100;
+    [SerializeField] private int _currentHealth;
 
     public int StartingHealth
     {
